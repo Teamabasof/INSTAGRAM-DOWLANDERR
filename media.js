@@ -86,7 +86,6 @@ bot.command('twtdl', async (ctx) => {
             ctx.replyWithVideo({url: res.data})
         }
         
-        })
         // }catch(e){
         // ctx.reply(`Link not found / wrong link!`)
         // }
