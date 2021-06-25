@@ -30,7 +30,7 @@ bot.command('igdl', async (ctx) => {
     let message = "";
     
     if(inputArray.length == 1){
-        message = "Please enter link, for example: /instagram https://www.instagram.com/p/CLSIkIOh0ad/?utm_source=ig_web_copy_link" 
+        message = "Kasih link yang benar!, Contoh: /igdl https://www.instagram.com/p/CAAZ1VcA2OA " 
         ctx.reply(message)
     } else{
         inputArray.shift();
@@ -39,6 +39,41 @@ bot.command('igdl', async (ctx) => {
         // try{
         const link = await axios.get('https://pencarikode.xyz/api/ig?url='+messager+'&apikey='+pais)
         const result = link.data.result.data
+        // const hasill = result
+        // console.log(result)
+        result.forEach((res) => {
+            
+        // console.log(hasil)
+        if(res.type == 'image'){
+        ctx.replyWithPhoto({url: res.data})
+
+        } else {
+            console.log('video')
+            ctx.replyWithVideo({url: res.data})
+        }
+        
+        })
+        // }catch(e){
+        // ctx.reply(`Link not found / wrong link!`)
+        // }
+    }
+})
+
+bot.command('twtdl', async (ctx) => {
+    let input = ctx.message.text
+    let inputArray = input.split(" ")
+    let message = "";
+    
+    if(inputArray.length == 1){
+        message = "Please enter link, for example: /instagram https://www.instagram.com/p/CLSIkIOh0ad/?utm_source=ig_web_copy_link" 
+        ctx.reply(message)
+    } else{
+        inputArray.shift();
+        messager = inputArray.join(" ")
+        // console.log(messager)
+        // try{
+        const link = await axios.get('https://api.xteam.xyz/dl/twitter?url='+messanger+'&APIKEY='+xteam)
+        const result = link.data.result.video_url
         // const hasill = result
         // console.log(result)
         result.forEach((res) => {
