@@ -72,7 +72,7 @@ bot.command('twtdl', async (ctx) => {
         messager = inputArray.join(" ")
         // console.log(messager)
         // try{
-        const link = await axios.get('https://api.xteam.xyz/dl/twitter?url='+messanger+'&APIKEY='+xteam)
+        const link = await axios.get('https://api.xteam.xyz/dl/twitter?url='+messager+'&APIKEY='+xteam)
         const result = link.data.result.video_url
         // const hasill = result
         // console.log(result)
