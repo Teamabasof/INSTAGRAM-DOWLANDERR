@@ -1,1 +1,1 @@
-web: node media.js
+worker: node media.js
