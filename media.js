@@ -76,6 +76,7 @@ bot.command('twtdl', async (ctx) => {
         const result = link.data.result.video_url
         // const hasill = result
         // console.log(result)
+        result.forEach((res) => {
             
         // console.log(hasil)
         if(res.type == 'image'){
