@@ -52,10 +52,10 @@ bot.command('igdl', async (ctx) => {
             ctx.replyWithVideo({url: res.data})
         }
         
-        })
-         }catch(e){
-         ctx.reply(`Link not found / wrong link!`)
-         }
+        // })
+         // }catch(e){
+         // ctx.reply(`Link not found / wrong link!`)
+         // }
     }
 })
 
