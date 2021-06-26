@@ -4,8 +4,8 @@ const axios = require('axios')
 const bot = new Telegraf('1869439262:AAHsFXrXfbo-iP_YTgQkMxBDWIpFcwj8Odk')
 
 let apizeks = 'farihdzaky'
-let xteam = '989d4c726785d39e'
 let pais = 'Tester'
+let lolkey = '60005a027838865b17f21b14'
 
 bot.command('start', (ctx) => {
   return ctx.replyWithPhoto({ url: 'https://telegra.ph/file/6e64a367f83998f5d7656.jpg' },
@@ -53,9 +53,37 @@ bot.command('igdl', async (ctx) => {
         }
         
         })
-        // }catch(e){
-        // ctx.reply(`Link not found / wrong link!`)
-        // }
+         }catch(e){
+         ctx.reply(`Link not found / wrong link!`)
+         }
+    }
+})
+
+bot.command('fbdl', async (ctx) => {
+    let input = ctx.message.text
+    let inputArray = input.split(" ")
+    let message = "";
+    
+    if(inputArray.length == 1){
+        message = "Kasih link yang benar, contoh: /fbdl https://id-id.facebook.com/SamsungGulf/videos/video-bokeh/561108457758458/" 
+        ctx.reply(message)
+    } else{
+        sendProses(ctx)
+        inputArray.shift();
+        messager = inputArray.join(" ")
+        try{
+        sendLoading(ctx)
+        const link = await axios.get(`http://lolhuman.herokuapp.com/api/facebook?apikey=`+lolkey+`&url=`+messager)
+        const { result } = link.data
+        const hasil = result.slice(0, 5)
+        hasil.forEach(async(res) => {
+        if(res.type == "mp4"){
+            ctx.replyWithVideo({url: res.link})
+        }
+        })
+        }catch(e){
+        ctx.reply(`Link tidak ditemukan!`)
+        }
     }
 })
 
