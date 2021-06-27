@@ -3,14 +3,12 @@ const axios = require('axios')
 
 const bot = new Telegraf('1869439262:AAHsFXrXfbo-iP_YTgQkMxBDWIpFcwj8Odk')
 
-let apizeks = 'farihdzaky'
 let pais = 'Tester'
-let lolkey = '60005a027838865b17f21b14'
 
 bot.command('start', (ctx) => {
-  return ctx.replyWithPhoto({ url: 'https://telegra.ph/file/6e64a367f83998f5d7656.jpg' },
+  return ctx.replyWithPhoto({ url: 'https://telegra.ph/file/c3f19e89e109e1534b02a.jpg' },
     {
-      caption: 'Hai '+ctx.from.first_name+' Aku adalah bot untuk mendownload video/photo dari instagram/facebook, Klik tombol menu untuk mendapatkan menu.',
+      caption: 'Hai '+ctx.from.first_name+' Aku adalah bot untuk mendownload video/photo dari instagram, Klik tombol menu untuk mendapatkan menu.',
       parse_mode: 'Markdown',
       ...Markup.inlineKeyboard([
         Markup.button.callback('Menu', 'help'),
@@ -21,7 +19,7 @@ bot.command('start', (ctx) => {
 })
 
 bot.action('help', ctx => {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
-    ctx.reply('/igdl -> untuk mendownload foto/video dari instagram\n/fbdl -> untuk mendownload video dari fesbuk')
+    ctx.reply('/igdl -> untuk mendownload foto/video dari instagram\n')
 })                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
 
 bot.command('igdl', async (ctx) => {
@@ -57,34 +55,6 @@ bot.command('igdl', async (ctx) => {
          // ctx.reply(`Link not found / wrong link!`)
          // }
     // }
-})
-
-bot.command('fbdl', async (ctx) => {
-    let input = ctx.message.text
-    let inputArray = input.split(" ")
-    let message = "";
-    
-    if(inputArray.length == 1){
-        message = "Kasih link yang benar, contoh: /fbdl https://id-id.facebook.com/SamsungGulf/videos/video-bokeh/561108457758458/" 
-        ctx.reply(message)
-    } else{
-        sendProses(ctx)
-        inputArray.shift();
-        messager = inputArray.join(" ")
-        try{
-        sendLoading(ctx)
-        const link = await axios.get(`http://lolhuman.herokuapp.com/api/facebook?apikey=`+lolkey+`&url=`+messager)
-        const { result } = link.data
-        const hasil = result.slice(0, 5)
-        hasil.forEach(async(res) => {
-        if(res.type == "mp4"){
-            ctx.replyWithVideo({url: res.link})
-        }
-        })
-        }catch(e){
-        ctx.reply(`Link tidak ditemukan!`)
-        }
-    }
 })
 
 bot.launch()
