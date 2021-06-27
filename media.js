@@ -55,7 +55,7 @@ bot.command('igdl', async (ctx) => {
         // })
          // }catch(e){
          // ctx.reply(`Link not found / wrong link!`)
-         }
+         // }
     }
 })
 
