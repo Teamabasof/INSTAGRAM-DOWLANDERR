@@ -55,7 +55,7 @@ bot.command('igdl', async (ctx) => {
          // ctx.reply(`Link not found / wrong link!`)
          // }
     // }
-})
+});
 bot.launch()
 
 // Enable graceful stop
