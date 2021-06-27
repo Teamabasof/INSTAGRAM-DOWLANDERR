@@ -1,7 +1,7 @@
 const { Telegraf, Markup } = require('telegraf')
 const axios = require('axios')
 
-const bot = new Telegraf('1869439262:AAHsFXrXfbo-iP_YTgQkMxBDWIpFcwj8Odk')
+const bot = new Telegraf('1611162737:AAF8gEEjkOJbvvgJUQUKL0o0ZJah6WKRe9E')
 
 let pais = 'Tester'
 
