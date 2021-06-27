@@ -56,7 +56,7 @@ bot.command('igdl', async (ctx) => {
          // }
     // }
 });
-bot.launch()
+bot.launch();
 
 // Enable graceful stop
 process.once('SIGINT', () => bot.stop('SIGINT'))
