@@ -1,1 +1,1 @@
-worker: node media.js
+worker: node index.js
