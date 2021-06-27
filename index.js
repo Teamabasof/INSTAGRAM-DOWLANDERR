@@ -28,14 +28,14 @@ bot.command('igdl', async (ctx) => {
     let message = "";
     
     if(inputArray.length == 1){
-        message = "Kasih link yang benar!, Contoh: /igdl https://www.instagram.com/p/CAAZ1VcA2OA " 
+        message = "Sertakan Link!" 
         ctx.reply(message)
     } else{
         inputArray.shift();
         messager = inputArray.join(" ")
         // console.log(messager)
         // try{
-        const link = await axios.get('https://pencarikode.xyz/api/ig?url='+messager+'&apikey='+pais)
+        const link = await axios.get(`https://pencarikode.xyz/api/ig?url=`+messager+`&apikey=`+pais)
         const result = link.data.result.data
         // const hasill = result
         // console.log(result)
@@ -50,12 +50,14 @@ bot.command('igdl', async (ctx) => {
             ctx.replyWithVideo({url: res.data})
         }
         
-        // })
-         // }catch(e){
-         // ctx.reply(`Link not found / wrong link!`)
-         // }
-    // }
-});
+        })
+        // }catch(e){
+        // ctx.reply(`Link not found / wrong link!`)
+        // }
+    }
+})
+
+//ctx.reply(`err`)
 bot.launch()
 
 // Enable graceful stop
