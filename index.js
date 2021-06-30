@@ -58,7 +58,7 @@ bot.command('igdl', async (ctx) => {
 })
 
 console.log('Bot Running')
-console.log('Happy Using! Don't Forget To Subs @nekozu!!')
+console.log('Happy Using! Dont Forget To Subs @nekozu!!')
 
 //ctx.reply(`err`)
 bot.launch()
