@@ -6,13 +6,12 @@ const bot = new Telegraf(process.env.token)
 let pais = 'Tester'
 
 bot.command('start', (ctx) => {
-  return ctx.replyWithPhoto({ url: process.env.img_start },
+  return ctx.replyWithPhoto({ url: 'https://telegra.ph/file/c3f19e89e109e1534b02a.jpg' },
     {
-      caption: process.env.start,
+      caption: 'Hai '+ctx.from.first_name+' Aku adalah bot untuk mendownload video/photo dari instagram, silahkan ketik /igdl lalu tempelkan link, reels juga bisa loh!.',
       parse_mode: 'Markdown',
       ...Markup.inlineKeyboard([
-        Markup.button.callback('Menu', 'help'),
-        Markup.button.url('Subs Channel Bot', process.env.channel,
+        Markup.button.url('Subs Channel Bot', 't.me/nekozu'),
       ])
     }
   )
@@ -62,7 +61,3 @@ console.log('Happy Using! Dont Forget To Subs @nekozu!!')
 
 //ctx.reply(`err`)
 bot.launch()
-
-// Enable graceful stop
-process.once('SIGINT', () => bot.stop('SIGINT'))
-process.once('SIGTERM', () => bot.stop('SIGTERM'))
