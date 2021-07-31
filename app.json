@@ -7,20 +7,8 @@
   ],
   "repository": "https://github.com/nekozu/instagram-downloader",
   "env": {
-    "start": {
-      "description": "Untuk command start.",
-      "required": true
-    },
     "token": {
       "description": "Bot token kamu",
-      "required": true
-    },
-    "img_start": {
-      "description": "url foto untuk start command",
-      "required": true
-    },
-     "channel": {
-      "description": "username channel kamu. pakai link https://t.me/usernamechannel",
       "required": true
     }
   },
