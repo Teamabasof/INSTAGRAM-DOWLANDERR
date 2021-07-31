@@ -1,18 +1,18 @@
 const { Telegraf, Markup } = require('telegraf');
 const axios = require('axios')
 
-const bot = new Telegraf('Your Bot Token')
+const bot = new Telegraf(process.env.token)
 
 let pais = 'Tester'
 
 bot.command('start', (ctx) => {
-  return ctx.replyWithPhoto({ url: 'https://telegra.ph/file/c3f19e89e109e1534b02a.jpg' },
+  return ctx.replyWithPhoto({ url: process.env.img_start },
     {
-      caption: 'Hai '+ctx.from.first_name+' Aku adalah bot untuk mendownload video/photo dari instagram, Klik tombol menu untuk mendapatkan menu.',
+      caption: process.env.start,
       parse_mode: 'Markdown',
       ...Markup.inlineKeyboard([
         Markup.button.callback('Menu', 'help'),
-        Markup.button.url('Subs Channel Bot', 't.me/nekozu'),
+        Markup.button.url('Subs Channel Bot', process.env.channel,
       ])
     }
   )
