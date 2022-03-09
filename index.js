@@ -1,62 +1,44 @@
 const { Telegraf, Markup } = require('telegraf');
-const axios = require('axios')
+const Config = require('./config.json')
+const save = require('instagram-save');
+const bot = new Telegraf(process.env.token);
+var path = require('path');
+const fs = require('fs-extra');
+var prefix = "/";
+var dir = './paylasimlar';
 
-const bot = new Telegraf(process.env.token)
+if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, {recursive: true});
+}
 
-let pais = process.env.apikey
+bot.start((ctx) => ctx.reply("Hai "+ctx.from.username+" Aku adalah bot untuk mendownload video/photo dari instagram"));
+bot.help((ctx) => ctx.reply('Silahkan kirim linknya'));
 
-bot.command('start', (ctx) => {
-  return ctx.replyWithPhoto({ url: 'https://telegra.ph/file/c3f19e89e109e1534b02a.jpg' },
-    {
-      caption: 'Hai '+ctx.from.first_name+' Aku adalah bot untuk mendownload video/photo dari instagram, silahkan ketik /igdl lalu tempelkan link, reels juga bisa loh!.',
-      parse_mode: 'Markdown',
-      ...Markup.inlineKeyboard([
-        Markup.button.url('Subs Channel Bot', 't.me/nekozu'),
-      ])
-    }
-  )
-})
-bot.action('help', ctx => {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
-    ctx.reply('/igdl -> untuk mendownload foto/video dari instagram\n')
-})                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+bot.on('text', (ctx) => {
+ctx.reply("Mendownload")
+let link = ctx.message.text;
+if (link.startsWith("https://www.instagram.com/")){
+save(`${link}`, 'paylasimlar/').then(res => {
+if (path.extname(`paylasimlar/${res.file}`) === ".jpg"){
+    ctx.replyWithPhoto({ source: `${res.file}`} , {caption: '@igbijabot 🇦🇿'});
+    fs.emptyDir('paylasimlar/', err => {
+        if (err) return console.error(err)
+        console.log("Sukses")
+    })
+    };
+    if (path.extname(`paylasimlar/${res.file}`) === ".mp4"){
+        ctx.replyWithVideo({ source: `${res.file}`}, {caption: '@igbijabot 🇦🇿' });
+        fs.emptyDir('paylasimlar/', err => {
+            if (err) return console.error(err)
+            console.log("Sukses")
+            })
+        };
+}
+);
+} else {
+    ctx.reply("Link tidak valid")
+}
 
-bot.command('igdl', async (ctx) => {
-    let input = ctx.message.text
-    let inputArray = input.split(" ")
-    let message = "";
-    
-    if(inputArray.length == 1){
-        message = "Sertakan Link!" 
-        ctx.reply(message)
-    } else{
-        inputArray.shift();
-        messager = inputArray.join(" ")
-        // console.log(messager)
-        // try{
-        const link = await axios.get(`https://api.chipa.xyz/api/download/ig?link=`+messager+`&apikey=`+pais)
-        const result = link.data.result.data
-        // const hasill = result
-        // console.log(result)
-        result.forEach((res) => {
-            
-        // console.log(hasil)
-        if(res.type == 'image'){
-        ctx.replyWithPhoto({url: res.data})
-
-        } else {
-            console.log('video')
-            ctx.replyWithVideo({url: res.data})
-        }
-        
-        })
-        // }catch(e){
-        // ctx.reply(`Link not found / wrong link!`)
-        // }
-    }
 })
 
-console.log('Bot Running')
-console.log('Happy Using! Dont Forget To Subs @nekozu!!')
-
-//ctx.reply(`err`)
-bot.launch()
+bot.launch();
