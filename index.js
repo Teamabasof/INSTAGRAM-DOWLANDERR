@@ -8,7 +8,7 @@ bot.help((ctx) => ctx.reply('Silahkan kirim linknya'));
 bot.on('text', (ctx) => {
 ctx.reply("Mendownload")
 let link = ctx.message.text;
-    instagram.insta_post("https://www.instagram.com/p/Ca15RMBvwiu/?utm_source=ig_web_copy_link").then(async (data) => {
+    instagram.insta_post(link).then(async (data) => {
     ctx.replyWithPhoto(data.post1.url)
    if (data.post1.type = "mp4") {
        ctx.replyWithVideo(data.post1.url)
