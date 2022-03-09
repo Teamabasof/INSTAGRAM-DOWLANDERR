@@ -2,8 +2,7 @@ const { Telegraf, Markup } = require('telegraf');
 const instagram = require("@phaticusthiccy/open-apis");
 const bot = new Telegraf(process.env.token);
 
-bot.start((ctx) => ctx.reply("Hai "+ctx.from.username+" Aku adalah bot untuk mendownload video/photo dari instagram"));
-bot.help((ctx) => ctx.reply('Silahkan kirim linknya'));
+bot.start((ctx) => ctx.reply("Hai "+ctx.from.username+" Aku adalah bot untuk mendownload video/photo dari instagram. Silahkan Kirim link untuk memulai download"));
 
 bot.on('text', (ctx) => {
 ctx.reply("Mendownload")
