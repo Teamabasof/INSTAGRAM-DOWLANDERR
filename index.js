@@ -12,8 +12,9 @@ let link = ctx.message.text;
     ctx.replyWithPhoto(data.post1.url)
    if (data.post1.type = "mp4") {
        ctx.replyWithVideo(data.post1.url)
-}
+     }
+   })
 })
 
 
-bot.launch();
+bot.launch()
