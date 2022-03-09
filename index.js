@@ -5,7 +5,7 @@ const bot = new Telegraf(process.env.token);
 var path = require('path');
 const fs = require('fs-extra');
 var prefix = "/";
-var dir = './paylasimlar';
+var dir = './anime';
 
 if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, {recursive: true});
@@ -18,17 +18,17 @@ bot.on('text', (ctx) => {
 ctx.reply("Mendownload")
 let link = ctx.message.text;
 if (link.startsWith("https://www.instagram.com/")){
-save(`${link}`, 'paylasimlar/').then(res => {
-if (path.extname(`paylasimlar/${res.file}`) === ".jpg"){
-    ctx.replyWithPhoto({ source: `${res.file}`} , {caption: '@igbijabot 🇦🇿'});
-    fs.emptyDir('paylasimlar/', err => {
+save(`${link}`, 'anime/').then(res => {
+if (path.extname(`anime/${res.file}`) === ".jpg"){
+    ctx.replyWithPhoto({ source: `${res.file}`} , {caption: '@igbijabot'});
+    fs.emptyDir('anime/', err => {
         if (err) return console.error(err)
         console.log("Sukses")
     })
     };
-    if (path.extname(`paylasimlar/${res.file}`) === ".mp4"){
-        ctx.replyWithVideo({ source: `${res.file}`}, {caption: '@igbijabot 🇦🇿' });
-        fs.emptyDir('paylasimlar/', err => {
+    if (path.extname(`anime/${res.file}`) === ".mp4"){
+        ctx.replyWithVideo({ source: `${res.file}`}, {caption: '@igbijabot' });
+        fs.emptyDir('anime/', err => {
             if (err) return console.error(err)
             console.log("Sukses")
             })
