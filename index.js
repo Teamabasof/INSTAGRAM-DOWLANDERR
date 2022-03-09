@@ -9,11 +9,13 @@ bot.on('text', (ctx) => {
 ctx.reply("Mendownload")
 let link = ctx.message.text;
     instagram.insta_post(link).then(async (data) => {
-    ctx.replyWithPhoto(data.post1.url)
    if (data.post1.type = "mp4") {
        ctx.replyWithVideo(data.post1.url)
-     }
-   })
+   
+    } else {
+      ctx.replyWithPhoto(data.post1.url)
+    }
+  })
 })
 
 
