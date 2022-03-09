@@ -16,22 +16,13 @@ bot.help((ctx) => ctx.reply('Silahkan kirim linknya'));
 bot.on('text', (ctx) => {
 ctx.reply("Mendownload")
 let link = ctx.message.text;
-if (link.startsWith("https://www.instagram.com/")){
-save(`${link}`, 'anime/').then(res => {
+if (link.startsWith("https://www.instagram.com/")){save(`${link}`, 'anime/').then(res => {
 if (path.extname(`anime/${res.file}`) === ".jpg"){
     ctx.replyWithPhoto({ source: `${res.file}`} , {caption: '@igbijabot'});
-    fs.emptyDir('anime/', err => {
-        if (err) return console.error(err)
-        console.log("Sukses")
     })
-    };
     if (path.extname(`anime/${res.file}`) === ".mp4"){
         ctx.replyWithVideo({ source: `${res.file}`}, {caption: '@igbijabot' });
-        fs.emptyDir('anime/', err => {
-            if (err) return console.error(err)
-            console.log("Sukses")
             })
-        };
 }
 );
 } else {
