@@ -19,8 +19,8 @@ let link = ctx.message.text;
 if (link.startsWith("https://www.instagram.com/")){save(`${link}`, 'anime/').then(res => {
 if (path.extname(`anime/${res.file}`) === ".jpg"){
     ctx.replyWithPhoto({ source: `${res.file}`} , {caption: '@igbijabot'});
-    })
     };
+    })
     if (path.extname(`anime/${res.file}`) === ".mp4"){
         ctx.replyWithVideo({ source: `${res.file}`}, {caption: '@igbijabot' });
             })
