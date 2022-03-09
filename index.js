@@ -24,7 +24,7 @@ if (path.extname(`anime/${res.file}`) === ".jpg"){
     if (path.extname(`anime/${res.file}`) === ".mp4"){
         ctx.replyWithVideo({ source: `${res.file}`}, {caption: '@igbijabot' });
             };
-        })                                                
+        }                                                
 }
 );
 } else {
