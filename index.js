@@ -3,7 +3,7 @@ const axios = require('axios')
 
 const bot = new Telegraf(process.env.token)
 
-let pais = 'Tester'
+let pais = process.env.apikey
 
 bot.command('start', (ctx) => {
   return ctx.replyWithPhoto({ url: 'https://telegra.ph/file/c3f19e89e109e1534b02a.jpg' },
@@ -33,7 +33,7 @@ bot.command('igdl', async (ctx) => {
         messager = inputArray.join(" ")
         // console.log(messager)
         // try{
-        const link = await axios.get(`https://pencarikode.xyz/api/ig?url=`+messager+`&apikey=`+pais)
+        const link = await axios.get(`https://api.chipa.xyz/api/download/ig?link=`+messager+`&apikey=`+pais)
         const result = link.data.result.data
         // const hasill = result
         // console.log(result)
