@@ -2,7 +2,13 @@ const { Telegraf, Markup } = require('telegraf');
 const instagram = require("@phaticusthiccy/open-apis");
 const bot = new Telegraf(process.env.token);
 
-bot.start((ctx) => ctx.reply("Hai "+ctx.from.username+" Aku adalah bot untuk mendownload video/photo dari instagram. Silahkan Kirim link untuk memulai download"));
+bot.start((ctx) => ctx.reply("Hai "+ctx.from.username+" Aku adalah bot untuk mendownload video/photo dari instagram. Silahkan Kirim link untuk memulai download", {
+      caption: 'Caption',
+      parse_mode: 'Markdown',
+      ...Markup.inlineKeyboard([
+        Markup.button.url('Developer', 'https//t.me/scerviez')
+      ])
+    }));
 
 bot.on('text', (ctx) => {
 ctx.reply("Mendownload")
