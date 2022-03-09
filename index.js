@@ -10,7 +10,7 @@ ctx.reply("Mendownload")
 let link = ctx.message.text;
     instagram.insta_post("https://www.instagram.com/p/Ca15RMBvwiu/?utm_source=ig_web_copy_link").then(async (data) => {
     ctx.replyWithPhoto(data.post1.url)
-    }
+    })
 })
 
 
