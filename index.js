@@ -20,9 +20,11 @@ if (link.startsWith("https://www.instagram.com/")){save(`${link}`, 'anime/').the
 if (path.extname(`anime/${res.file}`) === ".jpg"){
     ctx.replyWithPhoto({ source: `${res.file}`} , {caption: '@igbijabot'});
     })
+    };
     if (path.extname(`anime/${res.file}`) === ".mp4"){
         ctx.replyWithVideo({ source: `${res.file}`}, {caption: '@igbijabot' });
             })
+            };
 }
 );
 } else {
