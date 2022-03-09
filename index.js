@@ -1,5 +1,4 @@
 const { Telegraf, Markup } = require('telegraf');
-const Config = require('./config.json')
 const save = require('instagram-save');
 const bot = new Telegraf(process.env.token);
 var path = require('path');
