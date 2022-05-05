@@ -8,4 +8,4 @@ This Bot To Download Video/Photo From Instagram.
 This bot is free to use. You can change as you like and you are free to do what you want
 
 # Heroku
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Nekozu/instagram-Downloader.git)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Teamabasof/INSTAGRAM-DOWLANDERR)
