@@ -5,7 +5,7 @@ const bot = new Telegraf(process.env.token);
 bot.start((ctx) => ctx.reply("Salam "+ctx.from.username+" mən instagramdan video/şəkil yükləmək botuyam. Yükləməyə başlamaq üçün linki göndərin", {
       ...Markup.inlineKeyboard([
         Markup.button.url('Sahib🇦🇿', 
-           't.me/scerviez')
+           't.me/TTteamabasof')
       ])
      }
     ));
