@@ -2,16 +2,16 @@ const { Telegraf, Markup } = require('telegraf');
 const instagram = require("@phaticusthiccy/open-apis");
 const bot = new Telegraf(process.env.token);
 
-bot.start((ctx) => ctx.reply("Hai "+ctx.from.username+" Aku adalah bot untuk mendownload video/photo dari instagram. Silahkan Kirim link untuk memulai download", {
+bot.start((ctx) => ctx.reply("Salam "+ctx.from.username+" mən instagramdan video/şəkil yükləmək botuyam. Yükləməyə başlamaq üçün linki göndərin", {
       ...Markup.inlineKeyboard([
-        Markup.button.url('Developer', 
+        Markup.button.url('Sahib🇦🇿', 
            't.me/scerviez')
       ])
      }
     ));
 
 bot.on('text', (ctx) => {
-ctx.reply("Mendownload")
+ctx.reply("Yüklənir 📥")
 let link = ctx.message.text;
     instagram.insta_post(link).then(async (data) => {
    if (data.post1.type = "mp4") {
