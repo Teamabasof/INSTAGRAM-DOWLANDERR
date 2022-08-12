@@ -2,10 +2,10 @@ const { Telegraf, Markup } = require('telegraf');
 const instagram = require("@phaticusthiccy/open-apis");
 const bot = new Telegraf(process.env.token);
 
-bot.start((ctx) => ctx.reply("Salam "+ctx.from.username+" mən instagramdan video/şəkil yükləmək botuyam. Yükləməyə başlamaq üçün linki göndərin", {
+bot.start((ctx) => ctx.reply("selam ben Yiğit  "+ctx.from.username+" link at bakem", {
       ...Markup.inlineKeyboard([
-        Markup.button.url('Sahib🇦🇿', 
-           't.me/TTteamabasof')
+        Markup.button.url('kral', 
+           't.me/YigiTurkoglu')
       ])
      }
     ));
